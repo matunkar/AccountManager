@@ -1,7 +1,11 @@
 package accounts;
 
 public class BankAccount extends Account {
-    public BankAccount(int acctNum) {
-        super(acctNum);
+    public enum AccountType {
+        CHECKING, 
+        SAVINGS;
+    }
+    public BankAccount(int acctNum, double balance) {
+        super(acctNum, balance);
     }
 }

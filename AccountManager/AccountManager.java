@@ -1,6 +1,8 @@
 package AccountManager;
 import java.util.HashMap;
 import accounts.*;
+import accounts.BankAccount.AccountType;
+
 import java.util.Iterator;
 
 public class AccountManager {
@@ -25,21 +27,21 @@ public class AccountManager {
         }
     }
 
-    public void openAccount(Integer acctNum, String accountType, String accountName) {
+    public void openAccount(Integer acctNum, String accountType, double balance, AccountType type, double interestRate, double creditLimit, int gracePeriod) {
 
         Account newAccount;
 
         switch (accountType) {
             case "CreditAccount":
-                newAccount = new CreditAccount(acctNum);
+                newAccount = new CreditAccount(acctNum, creditLimit, interestRate, gracePeriod, balance);
                 accountsMap.put(acctNum, newAccount);
                 break;
             case "LoanAccount":
-                newAccount = new LoanAccount(acctNum);
+                newAccount = new LoanAccount(acctNum, balance);
                 accountsMap.put(acctNum, newAccount);
                 break;
             case "BankAccount":
-                newAccount = new BankAccount(acctNum);
+                newAccount = new BankAccount(acctNum, balance);
                 accountsMap.put(acctNum, newAccount);
                 break;
             default:
@@ -47,6 +49,7 @@ public class AccountManager {
                     System.out.println("KILL!");
                 }
         }
+
 
     }
     
